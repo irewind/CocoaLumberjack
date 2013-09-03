@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DDLog.h"
 
 @interface DDLogNSLogger : DDAbstractLogger<DDLogger>
 + (id)sharedInstance;
