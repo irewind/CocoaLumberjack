@@ -100,6 +100,24 @@ static dispatch_semaphore_t queueSemaphore;
 // Minor optimization for uniprocessor machines
 static unsigned int numProcessors;
 
+
++(NSString*)appType
+{
+    NSString* appType = @"";
+    
+#if defined(DEBUG) && TEST_SERVER == 0
+    appType = @"DL";
+#elif defined(DEBUG) && TEST_SERVER == 1
+    appType = @"D";
+#elif ADHOC==1 && TEST_SERVER == 1
+    appType = @"AT";
+#elif ADHOC==1 && TEST_SERVER == 0
+    appType = @"A";
+#endif
+    
+    return appType;
+}
+
 /**
  * The runtime sends initialize to each class in a program exactly one time just before the class,
  * or any class that inherits from it, is sent its first message from within the program. (Thus the

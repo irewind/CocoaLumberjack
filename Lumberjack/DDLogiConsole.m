@@ -31,7 +31,7 @@
     
     if (logMsg)
     {
-        [iConsole log:@"%@",logMsg];
+        [iConsole log:@"%@ %@",[DDLog appType],logMsg];
     }
 }
 

@@ -444,8 +444,9 @@
 - (NSString *)formatLogMessage:(DDLogMessage *)logMessage
 {
 	NSString *dateAndTime = [dateFormatter stringFromDate:(logMessage->timestamp)];
-	
-	return [NSString stringWithFormat:@"%@  %@", dateAndTime, logMessage->logMsg];
+	NSString* appType = [DDLog appType];
+    
+	return [NSString stringWithFormat:@"%@ %@  %@",appType,dateAndTime, logMessage->logMsg];
 }
 
 @end
