@@ -7,6 +7,7 @@
 //
 
 #import "DDLogViewAdaptor.h"
+#import "DDFileLogger.h"
 
 @interface DDLogViewAdaptor ()
 @end
@@ -32,6 +33,8 @@
     if (self = [super init])
     {
         self.logArray = [@[]mutableCopy];
+        
+        [self setLogFormatter:[[DDLogFileFormatterDefault alloc] init]];
     }
     
     return self;
@@ -41,12 +44,12 @@
     NSString *logMsg = logMessage->logMsg;
     
     if (self->formatter)
-        logMsg = [self.logFormatter formatLogMessage:logMessage];
+        logMsg = [self->formatter formatLogMessage:logMessage];
     
     if (logMsg)
     {
         [self.logArray addObject:logMsg];
-        [[NSNotificationCenter defaultCenter] postNotificationName:kNewLogEntryNotification object:self userInfo:@{kLogEntryParam:logMsg}];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:kNewLogEntryNotification object:self userInfo:@{kLogEntryParam:logMsg}];
     }
 }
 
