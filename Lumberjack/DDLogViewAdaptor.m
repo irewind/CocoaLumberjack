@@ -6,21 +6,35 @@
 //  Copyright (c) 2013 i-Rewind SRL. All rights reserved.
 //
 
-#import "DDLogiConsole.h"
-#import "iConsole.h"
+#import "DDLogViewAdaptor.h"
 
-@implementation DDLogiConsole {
+@interface DDLogViewAdaptor ()
+@end
+
+@implementation DDLogViewAdaptor
+{
     
 }
 
 + (instancetype) sharedInstance {
-    static DDLogiConsole *sharedLogger;
+    static DDLogViewAdaptor *sharedLogger;
     static dispatch_once_t onceLock;
     dispatch_once(&onceLock, ^{
-        sharedLogger = [[DDLogiConsole alloc] init];
+        sharedLogger = [[DDLogViewAdaptor alloc] init];
     });
     
     return sharedLogger;
+}
+
+
+-(instancetype)init
+{
+    if (self = [super init])
+    {
+        self.logArray = [@[]mutableCopy];
+    }
+    
+    return self;
 }
 
 - (void)logMessage:(DDLogMessage *)logMessage {
@@ -31,7 +45,8 @@
     
     if (logMsg)
     {
-        [iConsole log:@"%@ %@",[DDLog appType],logMsg];
+        [self.logArray addObject:logMsg];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNewLogEntryNotification object:self userInfo:@{kLogEntryParam:logMsg}];
     }
 }
 
