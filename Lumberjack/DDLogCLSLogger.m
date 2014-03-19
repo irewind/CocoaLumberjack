@@ -31,7 +31,9 @@
     
     if (logMsg)
     {
+#ifndef DEBUG
         CLSLog(@"%@", logMsg);
+#endif
     }
 }
 
