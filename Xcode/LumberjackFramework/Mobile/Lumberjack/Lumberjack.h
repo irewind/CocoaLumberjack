@@ -1,10 +1,11 @@
 
-#import <Lumberjack/DDLog.h>
+#import "DDLog.h"
 
-#import <Lumberjack/DDAbstractDatabaseLogger.h>
-#import <Lumberjack/DDASLLogger.h>
-#import <Lumberjack/DDFileLogger.h>
-#import <Lumberjack/DDTTYLogger.h>
+#import "DDAbstractDatabaseLogger.h"
+#import "DDASLLogger.h"
+#import "DDFileLogger.h"
+#import "DDTTYLogger.h"
 
-#import <Lumberjack/ContextFilterLogFormatter.h>
-#import <Lumberjack/DispatchQueueLogFormatter.h>
+#import "DDContextFilterLogFormatter.h"
+#import "DDDispatchQueueLogFormatter.h"
+#import "DDMultiFormatter.h"

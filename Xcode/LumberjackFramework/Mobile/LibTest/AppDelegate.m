@@ -14,18 +14,13 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-	[DDLog addLogger:[DDTTYLogger sharedInstance]];
-	
-	DDLogVerbose(@"Verbose");
-	DDLogInfo(@"Info");
-	DDLogWarn(@"Warn");
-	DDLogError(@"Error");
-	
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-	self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
-	self.window.rootViewController = self.viewController;
-    [self.window makeKeyAndVisible];
-	
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    
+    DDLogVerbose(@"Verbose");
+    DDLogInfo(@"Info");
+    DDLogWarn(@"Warn");
+    DDLogError(@"Error");
+    
     return YES;
 }
 
