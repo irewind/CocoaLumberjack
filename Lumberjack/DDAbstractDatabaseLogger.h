@@ -2,6 +2,7 @@
 
 #import "DDLog.h"
 
+#define islessgreater(x,y) x>y||x<y
 /**
  * Welcome to Cocoa Lumberjack!
  * 
